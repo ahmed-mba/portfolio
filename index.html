@@ -111,7 +111,6 @@
     .nav-links{display:none;}
   }
 
-  /* HERO */
   .hero{padding:76px 0 56px;}
   .hero-top{
     display:flex; gap:48px; align-items:flex-start;
@@ -154,7 +153,6 @@
     .photo-frame{width:150px; height:150px;}
   }
 
-  /* TERMINAL (hero) */
   .terminal{
     margin-top:44px;
     background:var(--bg-panel);
@@ -186,7 +184,6 @@
   .caret{display:inline-block; width:8px; height:16px; background:var(--amber); vertical-align:text-bottom; animation:blink 1s step-end infinite;}
   @keyframes blink{50%{opacity:0;}}
 
-  /* SECTIONS */
   .section{padding:64px 0; border-top:1px solid var(--line);}
   .section h2{font-size:clamp(24px,3.4vw,30px); margin-bottom:18px;}
   .section-head{margin-bottom:36px;}
@@ -221,7 +218,6 @@
     padding:4px 9px; border-radius:4px;
   }
 
-  /* PROJECTS */
   .proj-list{display:flex; flex-wrap:wrap; gap:22px;}
   .proj-card{
     background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius);
@@ -251,7 +247,6 @@
   .proj-link:hover{text-decoration:underline;}
   .proj-shot{width:100%; height:230px; object-fit:cover; object-position:center; display:block; border-bottom:1px solid var(--line); background:#0d1218;}
 
-  /* TIMELINE */
   .timeline{position:relative; margin-left:6px; padding-left:28px; border-left:1px solid var(--line);}
   .t-item{position:relative; padding-bottom:30px;}
   .t-item:last-child{padding-bottom:0;}
@@ -264,7 +259,6 @@
   .t-item .school{color:var(--ink-muted); font-style:italic; font-size:14.5px; margin-top:2px;}
   .t-item .loc{color:var(--ink-muted); font-size:12.5px; margin-top:4px; font-family:var(--font-mono);}
 
-  /* LANGUES strip */
   .langues{display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:8px;}
   .lang-pill{
     font-family:var(--font-mono); font-size:12.5px; color:var(--ink-primary);
@@ -272,7 +266,6 @@
     padding:7px 14px;
   }
 
-  /* CONTACT */
   .contact-grid{display:flex; flex-wrap:wrap; gap:16px; margin-top:30px;}
   .contact-card{
     background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius);
@@ -290,7 +283,6 @@
   footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
   footer p{margin:0; color:var(--ink-muted); font-size:12.5px; font-family:var(--font-mono);}
 
-  /* 3D space background */
   .hero3d{position:fixed; inset:0; z-index:0; opacity:0.5; pointer-events:none; overflow:hidden;}
   .hero3d canvas{display:block; width:100% !important; height:100% !important;}
   .hero > .wrap{position:relative; z-index:1;}
@@ -618,7 +610,6 @@
 </footer>
 
 <script>
-  // Typing terminal effect
   (function(){
     var body = document.getElementById('termBody');
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -684,7 +675,6 @@
     setTimeout(typeLine, 400);
   })();
 
-  // Scroll reveal
   (function(){
     var els = document.querySelectorAll('.reveal');
     if(!('IntersectionObserver' in window)){
@@ -702,7 +692,6 @@
     els.forEach(function(e){obs.observe(e);});
   })();
 
-  // 3D tilt on project & skill cards
   (function(){
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -727,7 +716,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-  // 3D cosmic space scene in hero — planet + ring + starfield + floating tech objects
   (function(){
     var container = document.getElementById('hero3d');
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -748,7 +736,6 @@
     scene.add(new THREE.AmbientLight(0xffffff, 0.6));
     var dl = new THREE.DirectionalLight(0xffffff, 0.95); dl.position.set(6,7,9); scene.add(dl);
 
-    // starfield
     var STAR=420, spos=[];
     for(var i=0;i<STAR;i++){
       var r=70+Math.random()*45, th=Math.random()*Math.PI*2, ph=Math.acos(2*Math.random()-1);
@@ -757,7 +744,6 @@
     var sg=new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.Float32BufferAttribute(spos,3));
     scene.add(new THREE.Points(sg, new THREE.PointsMaterial({color:0xE7ECF2, size:0.55, transparent:true, opacity:0.85, sizeAttenuation:true})));
 
-    // planet (saturn-like)
     var planet = new THREE.Mesh(
       new THREE.SphereGeometry(4.4, 48, 32),
       new THREE.MeshStandardMaterial({color:0x0E3A3A, roughness:0.7, metalness:0.35, emissive:0x072020, emissiveIntensity:0.45})
@@ -770,7 +756,6 @@
       new THREE.MeshBasicMaterial({color:0x35D6C0, wireframe:true, transparent:true, opacity:0.16})
     ));
 
-    // rings
     var ring1 = new THREE.Mesh(
       new THREE.TorusGeometry(6.6, 0.42, 16, 90),
       new THREE.MeshStandardMaterial({color:0xFFB200, roughness:0.5, metalness:0.4, emissive:0xFFB200, emissiveIntensity:0.3, transparent:true, opacity:0.9})
@@ -783,7 +768,6 @@
     );
     ring2.rotation.x = Math.PI/2.2; ring2.rotation.z = 0.35; planet.add(ring2);
 
-    // floating tech objects
     function laptop(){
       var g=new THREE.Group();
       var base=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.1,0.95), new THREE.MeshStandardMaterial({color:0xC0C6CC, roughness:0.4, metalness:0.5}));
@@ -854,9 +838,7 @@
   let scrollRaf = 0;
   let trustedTopOrigin = null;
 
-  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
-  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
-  // across multiple labels.
+
   function matchesAllowedOrigin(origin) {
     if (!origin) return false;
     for (const entry of allowedParentOrigins) {
@@ -874,13 +856,7 @@
     return false;
   }
 
-  // Trust decision: when the sender is same-origin-visible (event.origin is a
-  // real origin like https://www.perplexity.ai) we trust event.origin directly.
-  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
-  // broker's stamped `parentOrigin` to identify the top window. The fallback
-  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
-  // on the response path (see postToTrustedTop) to ensure replies can't be
-  // delivered to anyone but the actual top window of that claimed origin.
+
   function getTrustedParentOrigin(event) {
     const forwardedParentOrigin =
       typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
@@ -888,10 +864,7 @@
     return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
   }
 
-  // All responses go to window.top with targetOrigin = the allowlisted origin.
-  // An attacker that iframes us inside their own null-origin broker can claim
-  // any parentOrigin they like, but the browser will drop the reply whenever
-  // the real top's origin doesn't match — so the screenshot never leaves.
+
   function postToTrustedTop(message) {
     if (!trustedTopOrigin) return;
     try {
@@ -904,9 +877,6 @@
 
     try {
       const computedStyle = getComputedStyle(original);
-      // cssText on a computed style is the serialized declaration in modern
-      // Chromium/Safari — a single read beats enumerating ~400 longhand
-      // properties. Firefox returns "" here, so we fall back on empty.
       const serialized = computedStyle.cssText;
       if (serialized) {
         clone.style.cssText = serialized;
@@ -945,9 +915,6 @@
     return matches[0][1];
   }
 
-  // Cache resolved font URL -> data URI across captures. Fonts on a page
-  // essentially never change, and a batch run emits multiple captures back to
-  // back — without this we'd refetch + re-base64 every time.
   const fontDataUriCache = new Map();
   const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
 
@@ -1084,8 +1051,6 @@
     }
 
     try {
-      // Wait for any pending web fonts to resolve so both inline metrics and
-      // the @font-face inlining below see the same loaded faces.
       if (document.fonts && document.fonts.ready) {
         try {
           await document.fonts.ready;
@@ -1101,11 +1066,6 @@
       }
 
       stripExternal(clone);
-
-      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
-      // can resolve them — external font URLs aren't fetched during
-      // foreignObject rendering, which would otherwise force a fallback face
-      // and change text metrics.
       const inlinedFontCss = await buildInlinedFontCss();
       if (inlinedFontCss) {
         const styleEl = document.createElement("style");
@@ -1143,8 +1103,6 @@
 
   window.addEventListener("message", function (event) {
     if (!event.data) return;
-    // Only accept messages from the direct parent frame. Blocks sibling /
-    // unrelated-window postMessage senders that could otherwise reach us.
     if (event.source !== window.parent) return;
 
     const trustedParentOrigin = getTrustedParentOrigin(event);
