@@ -1,299 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed Mebarki — Portfolio</title>
-<meta name="description" content="Ahmed Mebarki — Étudiant en Réseau &amp; Système. Portfolio et recherche de stage.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0E12'/%3E%3Ctext x='50' y='68' font-size='58' font-family='monospace' fill='%23FFB200' text-anchor='middle'%3E%3E_%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg-void:#0A0E12;
-    --bg-panel:#121821;
-    --bg-panel-alt:#182230;
-    --ink-primary:#E7ECF2;
-    --ink-muted:#8B96A5;
-    --amber:#FFB200;
-    --teal:#35D6C0;
-    --line:#232E3A;
-    --ok:#3ECF6E;
-    --radius:8px;
-    --font-display:'Space Grotesk',sans-serif;
-    --font-body:'IBM Plex Sans',sans-serif;
-    --font-mono:'IBM Plex Mono',monospace;
-  }
-
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
-  }
-
-  body{
-    margin:0;
-    background:var(--bg-void);
-    color:var(--ink-primary);
-    font-family:var(--font-body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    background-image:none;
-    position:relative;
-  }
-  body::before{display:none;}
-  main, header, nav, footer{position:relative; z-index:1;}
-
-  a{color:var(--teal); text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  :focus-visible{outline:2px solid var(--amber); outline-offset:3px; border-radius:2px;}
-
-  .eyebrow{
-    font-family:var(--font-mono);
-    font-size:12.5px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--teal);
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin:0 0 14px;
-  }
-  .eyebrow::before{content:"//"; color:var(--ink-muted);}
-
-  h1,h2,h3{font-family:var(--font-display); font-weight:700; margin:0; color:var(--ink-primary);}
-
-  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
-
-  /* NAV */
-  .nav{
-    position:sticky; top:0; z-index:20;
-    background:rgba(10,14,18,0.82);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{
-    max-width:1080px; margin:0 auto; padding:14px 28px;
-    display:flex; align-items:center; justify-content:space-between;
-    gap:16px;
-  }
-  .brand{
-    font-family:var(--font-mono); font-weight:600; font-size:14.5px;
-    color:var(--ink-primary); display:flex; align-items:center; gap:9px;
-    white-space:nowrap;
-  }
-  .dot{width:8px; height:8px; border-radius:50%; background:var(--ok); flex:none;
-    box-shadow:0 0 0 3px rgba(62,207,110,0.18);
-  }
-  .dot.pulse{animation:pulse 2.4s ease-in-out infinite;}
-  @keyframes pulse{
-    0%,100%{box-shadow:0 0 0 3px rgba(62,207,110,0.18);}
-    50%{box-shadow:0 0 0 6px rgba(62,207,110,0.10);}
-  }
-  .nav-links{display:flex; gap:26px; list-style:none; margin:0; padding:0;}
-  .nav-links a{
-    font-family:var(--font-mono); font-size:13px; letter-spacing:0.05em;
-    color:var(--ink-muted); text-transform:uppercase;
-  }
-  .nav-links a:hover{color:var(--amber); text-decoration:none;}
-  .nav-cta{
-    font-family:var(--font-mono); font-size:13px; letter-spacing:0.04em;
-    color:var(--bg-void); background:var(--teal); padding:8px 14px; border-radius:6px;
-    white-space:nowrap; font-weight:600;
-  }
-  .nav-cta:hover{background:var(--amber); text-decoration:none;}
-  .nav-right{display:flex; align-items:center; gap:14px;}
-  .icon-link{color:var(--ink-muted); display:flex; align-items:center;}
-  .icon-link:hover{color:var(--teal); text-decoration:none;}
-  @media (max-width:760px){
-    .nav-links{display:none;}
-  }
-
-  .hero{padding:76px 0 56px;}
-  .hero-top{
-    display:flex; gap:48px; align-items:flex-start;
-  }
-  .hero-top > .hero-text{flex:1 1 auto; min-width:0;}
-  .hero h1{font-size:clamp(38px,6vw,58px); letter-spacing:-0.02em; line-height:1.05;}
-  .hero .role{
-    font-family:var(--font-mono); color:var(--ink-muted); font-size:16px; margin-top:14px; max-width:46ch;
-  }
-  .meta-list{list-style:none; margin:26px 0 0; padding:0; display:flex; flex-direction:column; gap:9px;}
-  .meta-list li{font-family:var(--font-mono); font-size:13px; color:var(--ink-muted);}
-  .meta-list b{color:var(--ink-primary); font-weight:500;}
-  .meta-list .k{color:var(--teal); letter-spacing:0.06em;}
-
-  .cta-row{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
-  .btn{
-    font-family:var(--font-mono); font-size:14px; font-weight:600; letter-spacing:0.02em;
-    padding:12px 20px; border-radius:6px; display:inline-flex; align-items:center; gap:8px;
-  }
-  .btn-primary{background:var(--amber); color:#1A1204;}
-  .btn-primary:hover{background:#ffc233; text-decoration:none;}
-  .btn-ghost{border:1px solid var(--line); color:var(--ink-primary); background:var(--bg-panel);}
-  .btn-ghost:hover{border-color:var(--teal); color:var(--teal); text-decoration:none;}
-
-  .photo-frame{
-    position:relative; border-radius:var(--radius); overflow:hidden;
-    border:1px solid var(--line);
-    background:var(--bg-panel);
-    width:220px; height:220px; flex:none;
-  }
-  .photo-frame img{display:block; width:100%; height:100%; object-fit:cover; object-position:center top; filter:grayscale(15%) contrast(1.03);}
-  .photo-frame .tag{
-    position:absolute; left:0; right:0; bottom:0;
-    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.08em;
-    color:var(--amber); background:rgba(10,14,18,0.82);
-    padding:6px 10px; border-top:1px solid var(--line);
-  }
-  @media (max-width:700px){
-    .hero-top{flex-direction:column-reverse; gap:28px;}
-    .photo-frame{width:150px; height:150px;}
-  }
-
-  .terminal{
-    margin-top:44px;
-    background:var(--bg-panel);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
-    box-shadow:0 20px 60px -20px rgba(0,0,0,0.6);
-  }
-  .term-bar{
-    display:flex; align-items:center; gap:8px;
-    padding:10px 14px; border-bottom:1px solid var(--line);
-    background:var(--bg-panel-alt);
-  }
-  .term-bar .tdot{width:10px; height:10px; border-radius:50%;}
-  .term-bar .r{background:#FF5F56;} .term-bar .y{background:#FFBD2E;} .term-bar .g{background:#27C93F;}
-  .term-bar .path{
-    margin-left:8px; font-family:var(--font-mono); font-size:12px; color:var(--ink-muted);
-  }
-  .term-body{
-    padding:22px 24px 26px; font-family:var(--font-mono); font-size:14.5px;
-    min-height:150px;
-  }
-  .term-body .ln{margin:0 0 10px; white-space:pre-wrap; word-break:break-word;}
-  .term-body .prompt{color:var(--teal);}
-  .term-body .path2{color:var(--ink-muted);}
-  .term-body .cmd{color:var(--ink-primary);}
-  .term-body .out{color:var(--ink-muted);}
-  .term-body .ok{color:var(--ok); font-weight:600;}
-  .caret{display:inline-block; width:8px; height:16px; background:var(--amber); vertical-align:text-bottom; animation:blink 1s step-end infinite;}
-  @keyframes blink{50%{opacity:0;}}
-
-  .section{padding:64px 0; border-top:1px solid var(--line);}
-  .section h2{font-size:clamp(24px,3.4vw,30px); margin-bottom:18px;}
-  .section-head{margin-bottom:36px;}
-  .lede{color:var(--ink-muted); font-size:17px; max-width:68ch;}
-
-  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
-  .reveal.is-visible{opacity:1; transform:none;}
-
-  /* SKILLS */
-  .skill-grid{display:flex; flex-wrap:wrap; gap:18px;}
-  .skill-card{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius);
-    padding:22px 22px 20px;
-    flex:1 1 100%;
-    transition:transform .2s ease-out;
-    will-change:transform;
-  }
-  @media (min-width:700px){
-    .skill-card{flex:1 1 calc(50% - 9px);}
-  }
-  .skill-card .sh{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;}
-  .skill-card h3{font-size:17px;}
-  .skill-card .status{
-    font-family:var(--font-mono); font-size:10.5px; color:var(--ok); letter-spacing:0.08em;
-    display:flex; align-items:center; gap:6px;
-  }
-  .skill-card p{color:var(--ink-muted); font-size:14.5px; margin:0 0 14px;}
-  .tag-row{display:flex; flex-wrap:wrap; gap:7px;}
-  .tag{
-    font-family:var(--font-mono); font-size:11px; letter-spacing:0.04em;
-    color:var(--ink-primary); background:var(--bg-panel-alt); border:1px solid var(--line);
-    padding:4px 9px; border-radius:4px;
-  }
-
-  .proj-list{display:flex; flex-wrap:wrap; gap:22px;}
-  .proj-card{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius);
-    overflow:hidden;
-    transition:transform .2s ease-out;
-    will-change:transform;
-    flex:1 1 100%;
-    display:flex; flex-direction:column;
-  }
-  @media (min-width:760px){
-    .proj-card{flex:1 1 calc(50% - 11px);}
-  }
-  .proj-card .term-bar .path{color:var(--teal);}
-  .proj-card:nth-child(even) .term-bar .path{color:var(--amber);}
-  .proj-body{padding:24px 26px 26px; flex:1; display:flex; flex-direction:column;}
-  .proj-body h3{font-size:19px; margin-bottom:12px;}
-  .proj-body p{margin:0 0 16px; color:var(--ink-muted); font-size:14.5px; line-height:1.6;}
-  .proj-body ul{margin:0 0 16px; padding-left:20px; color:var(--ink-muted); font-size:14.5px;}
-  .proj-body li{margin-bottom:6px;}
-  .proj-body li::marker{color:var(--teal);}
-  .proj-link{
-    display:inline-flex; align-items:center; gap:6px; margin-top:auto; padding-top:16px;
-    font-family:var(--font-mono); font-size:12.5px; font-weight:600;
-    color:var(--teal);
-  }
-  .proj-card:nth-child(even) .proj-link{color:var(--amber);}
-  .proj-link:hover{text-decoration:underline;}
-  .proj-shot{width:100%; height:230px; object-fit:cover; object-position:center; display:block; border-bottom:1px solid var(--line); background:#0d1218;}
-
-  .timeline{position:relative; margin-left:6px; padding-left:28px; border-left:1px solid var(--line);}
-  .t-item{position:relative; padding-bottom:30px;}
-  .t-item:last-child{padding-bottom:0;}
-  .t-item::before{
-    content:""; position:absolute; left:-33px; top:4px; width:9px; height:9px; border-radius:50%;
-    background:var(--bg-void); border:2px solid var(--teal);
-  }
-  .t-item .yr{font-family:var(--font-mono); font-size:12.5px; color:var(--teal); letter-spacing:0.05em;}
-  .t-item h3{font-size:16.5px; margin-top:6px; font-weight:600;}
-  .t-item .school{color:var(--ink-muted); font-style:italic; font-size:14.5px; margin-top:2px;}
-  .t-item .loc{color:var(--ink-muted); font-size:12.5px; margin-top:4px; font-family:var(--font-mono);}
-
-  .langues{display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:8px;}
-  .lang-pill{
-    font-family:var(--font-mono); font-size:12.5px; color:var(--ink-primary);
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:20px;
-    padding:7px 14px;
-  }
-
-  .contact-grid{display:flex; flex-wrap:wrap; gap:16px; margin-top:30px;}
-  .contact-card{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius);
-    padding:20px; display:block;
-    flex:1 1 100%;
-  }
-  @media (min-width:700px){
-    .contact-card{flex:1 1 calc((100% - 32px)/3);}
-  }
-  .contact-card:hover{border-color:var(--teal); text-decoration:none;}
-  .contact-card .k{font-family:var(--font-mono); font-size:11px; color:var(--ink-muted); letter-spacing:0.08em; text-transform:uppercase;}
-  .contact-card .v{color:var(--ink-primary); font-size:15.5px; margin-top:8px; font-weight:500;}
-
-  footer{border-top:1px solid var(--line); padding:28px 0 40px;}
-  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
-  footer p{margin:0; color:var(--ink-muted); font-size:12.5px; font-family:var(--font-mono);}
-
-  .hero3d{position:fixed; inset:0; z-index:0; opacity:0.5; pointer-events:none; overflow:hidden;}
-  .hero3d canvas{display:block; width:100% !important; height:100% !important;}
-  .hero > .wrap{position:relative; z-index:1;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmed Mebarki — Étudiant Réseau &amp; Système | Portfolio</title>
+  <meta name="description" content="Ahmed Mebarki, étudiant en Réseau &amp; Système à Namur. Portfolio, projets et recherche de stage en administration système et sécurité réseau.">
+  <meta name="theme-color" content="#0A0E12">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ahmed Mebarki — Portfolio">
+  <meta property="og:description" content="Étudiant en Réseau &amp; Système, à la recherche d'un stage en administration système et sécurité réseau.">
+  <meta property="og:locale" content="fr_BE">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0E12'/%3E%3Ctext x='50' y='68' font-size='58' font-family='monospace' fill='%23FFB200' text-anchor='middle'%3E%3E_%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#profil">Aller au contenu</a>
 
-<nav class="nav">
+<nav class="nav" aria-label="Navigation principale">
   <div class="nav-inner">
-    <div class="brand"><span class="dot pulse"></span>AHMED MEBARKI</div>
-    <ul class="nav-links">
+    <a class="brand" href="#accueil"><span class="dot pulse" aria-hidden="true"></span>AHMED MEBARKI</a>
+    <ul class="nav-links" id="nav-links">
       <li><a href="#profil">Profil</a></li>
       <li><a href="#competences">Compétences</a></li>
       <li><a href="#projets">Projets</a></li>
@@ -301,833 +31,210 @@
     </ul>
     <div class="nav-right">
       <a class="icon-link" href="https://github.com/ahmed-mba" target="_blank" rel="noopener" aria-label="Profil GitHub">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.41-5.26 5.69.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.2.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.41-5.26 5.69.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.2.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
       </a>
       <a class="icon-link" href="https://www.linkedin.com/in/ahmed-mebarki-774200248/" target="_blank" rel="noopener" aria-label="Profil LinkedIn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
       </a>
+      <a class="nav-cta" href="#contact">Contact</a>
+      <button class="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false">Menu</button>
     </div>
-    <a class="nav-cta" href="#contact">Contact</a>
   </div>
 </nav>
 
-<div id="hero3d" class="hero3d"></div>
 <header class="hero" id="accueil">
   <div class="wrap">
     <div class="hero-top">
       <div class="hero-text">
-        <p class="eyebrow">PORTFOLIO — RECHERCHE DE STAGE 2026</p>
+        <p class="eyebrow">Portfolio — recherche de stage</p>
         <h1>Ahmed Mebarki</h1>
         <p class="role">Étudiant en Réseau &amp; Système.</p>
-
         <ul class="meta-list">
           <li><span class="k">LOCALISATION</span> — <b>Namur, Belgique</b></li>
           <li><span class="k">FORMATION</span> — <b>Bachelier en informatique, ECIPN de Namur</b></li>
           <li><span class="k">OBJECTIF</span> — <b>Stage en administration système &amp; sécurité réseau</b></li>
         </ul>
-
         <div class="cta-row">
           <a class="btn btn-primary" href="#contact">Me contacter</a>
           <a class="btn btn-ghost" href="#projets">Voir les projets</a>
         </div>
       </div>
-
       <div class="photo-frame">
-        <img src="assets/photo.jpg" alt="Photo d'Ahmed Mebarki">
+        <img src="assets/photo.jpg" alt="Portrait d'Ahmed Mebarki" width="220" height="220">
       </div>
     </div>
 
-    <div class="terminal">
+    <div class="terminal" aria-hidden="true">
       <div class="term-bar">
         <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
         <span class="path">ahmed@namur — zsh</span>
       </div>
-      <div class="term-body" id="termBody" aria-live="polite"></div>
+      <div class="term-body" id="termBody"></div>
     </div>
   </div>
 </header>
 
 <main>
-  <section class="section reveal" id="profil">
+  <section class="section reveal" id="profil" aria-labelledby="t-profil">
     <div class="wrap">
-      <p class="eyebrow">PROFIL</p>
-      <h2>Qui suis-je&nbsp;?</h2>
-      <p class="lede" style="margin-top:16px;">
-        Étudiant en Réseau &amp; Système, je recherche un stage pour mettre en pratique
-        mes connaissances en administration système et en sécurité réseau. Curieux et méthodique, j'aime
-        comprendre comment les systèmes fonctionnent en profondeur — d'un paquet réseau capturé sous Wireshark
-        jusqu'à une API que je déploie moi-même. Je cherche aujourd'hui un terrain concret pour renforcer ces
-        compétences aux côtés d'une équipe.
+      <p class="eyebrow">Profil</p>
+      <h2 id="t-profil">Qui suis-je&nbsp;?</h2>
+      <p class="lede">
+        Étudiant en Réseau &amp; Système, je recherche un stage pour mettre en pratique mes connaissances en
+        administration système et en sécurité réseau. Curieux et méthodique, j'aime comprendre comment les
+        systèmes fonctionnent en profondeur — d'un paquet réseau capturé sous Wireshark jusqu'à une API que je
+        déploie moi-même. Je cherche aujourd'hui un terrain concret pour renforcer ces compétences aux côtés
+        d'une équipe.
       </p>
     </div>
   </section>
 
-  <section class="section reveal" id="competences">
+  <section class="section reveal" id="competences" aria-labelledby="t-comp">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">COMPÉTENCES</p>
-        <h2>Compétences techniques</h2>
+        <p class="eyebrow">Compétences</p>
+        <h2 id="t-comp">Compétences techniques</h2>
       </div>
       <div class="skill-grid">
-
-        <div class="skill-card">
-          <div class="sh"><h3>Développement &amp; Programmation</h3><span class="status">● OK</span></div>
+        <article class="skill-card">
+          <h3>Développement &amp; Programmation</h3>
           <p>Python, C, Java (POO), HTML/CSS/JS et FastAPI. Conception et gestion de bases de données relationnelles et NoSQL.</p>
-          <div class="tag-row">
-            <span class="tag">PYTHON</span><span class="tag">C</span><span class="tag">JAVA</span>
-            <span class="tag">FASTAPI</span><span class="tag">MYSQL</span><span class="tag">NOSQL</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="sh"><h3>Administration Système &amp; Réseau</h3><span class="status">● OK</span></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">C</span><span class="tag">Java</span><span class="tag">FastAPI</span><span class="tag">MySQL</span><span class="tag">NoSQL</span></div>
+        </article>
+        <article class="skill-card">
+          <h3>Administration Système &amp; Réseau</h3>
           <p>Gestion de serveurs sous Linux et Kali Linux, administration à distance, analyse de protocoles et audit réseau.</p>
-          <div class="tag-row">
-            <span class="tag">LINUX</span><span class="tag">KALI</span><span class="tag">PUTTY</span>
-            <span class="tag">WIRESHARK</span><span class="tag">NMAP</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="sh"><h3>Sécurité &amp; Chiffrement</h3><span class="status">● OK</span></div>
+          <div class="tag-row"><span class="tag">Linux</span><span class="tag">Kali</span><span class="tag">PuTTY</span><span class="tag">Wireshark</span><span class="tag">Nmap</span></div>
+        </article>
+        <article class="skill-card">
+          <h3>Sécurité &amp; Chiffrement</h3>
           <p>Gestion des certificats et chiffrement des données, mécanismes d'authentification et sécurisation des échanges.</p>
-          <div class="tag-row">
-            <span class="tag">OPENPGP</span><span class="tag">KLEOPATRA</span><span class="tag">AUTHENTIFICATION</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="sh"><h3>Fondements Théoriques</h3><span class="status">● OK</span></div>
+          <div class="tag-row"><span class="tag">OpenPGP</span><span class="tag">Kleopatra</span><span class="tag">Authentification</span></div>
+        </article>
+        <article class="skill-card">
+          <h3>Fondements Théoriques</h3>
           <p>Algorithmique, structures de données, vérification et calculabilité — les bases de chaque système que je construis.</p>
-          <div class="tag-row">
-            <span class="tag">ALGORITHMIQUE</span><span class="tag">STRUCTURES DE DONNÉES</span><span class="tag">CALCULABILITÉ</span>
-          </div>
-        </div>
-
+          <div class="tag-row"><span class="tag">Algorithmique</span><span class="tag">Structures de données</span><span class="tag">Calculabilité</span></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section reveal" id="projets">
+  <section class="section reveal" id="projets" aria-labelledby="t-proj">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">PROJETS</p>
-        <h2>Projets académiques</h2>
+        <p class="eyebrow">Projets</p>
+        <h2 id="t-proj">Projets académiques</h2>
       </div>
-
       <div class="proj-list">
 
-        <div class="proj-card">
-          <div class="term-bar">
-            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
-            <span class="path">restaurant_db.sql — PostgreSQL</span>
-          </div>
-          <img class="proj-shot" src="assets/proj-restaurant.jpg" alt="Capture du menu du système de réservation de restaurant">
+        <article class="proj-card">
+          <div class="term-bar" aria-hidden="true"><span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span><span class="path">restaurant_db.sql — PostgreSQL</span></div>
+          <img class="proj-shot" src="assets/proj-restaurant.jpg" alt="Capture du menu du système de réservation de restaurant" width="600" height="230" loading="lazy" decoding="async">
           <div class="proj-body">
             <h3>Base de données pour un restaurant</h3>
             <p>Conception complète d'une base PostgreSQL (MCD/MLD) pour un restaurant, avec scripts Python pour automatiser réservations, commandes et rapports.</p>
-            <div class="tag-row">
-              <span class="tag">POSTGRESQL</span><span class="tag">PYTHON</span><span class="tag">MODÉLISATION</span>
-            </div>
+            <div class="tag-row"><span class="tag">PostgreSQL</span><span class="tag">Python</span><span class="tag">Modélisation</span></div>
             <a class="proj-link" href="https://github.com/ahmed-mba/restaurant-management-system" target="_blank" rel="noopener">→ Voir sur GitHub</a>
           </div>
-        </div>
+        </article>
 
-        <div class="proj-card">
-          <div class="term-bar">
-            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
-            <span class="path">main.py — FastAPI</span>
-          </div>
-          <img class="proj-shot" src="assets/proj-fastapi.jpg" alt="Capture de la page d'accueil du site GO Unamur">
+        <article class="proj-card">
+          <div class="term-bar" aria-hidden="true"><span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span><span class="path">main.py — FastAPI</span></div>
+          <img class="proj-shot" src="assets/proj-fastapi.jpg" alt="Capture de la page d'accueil du site de réservation de voyages" width="600" height="230" loading="lazy" decoding="async">
           <div class="proj-body">
             <h3>Site web dynamique avec FastAPI</h3>
             <p>Site de réservation de voyages avec architecture backend structurée, middlewares de sécurité, authentification JWT et API RESTful.</p>
-            <div class="tag-row">
-              <span class="tag">FASTAPI</span><span class="tag">PYTHON</span><span class="tag">API REST</span><span class="tag">SÉCURITÉ</span>
-            </div>
+            <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">Python</span><span class="tag">API REST</span><span class="tag">Sécurité</span></div>
             <a class="proj-link" href="https://github.com/ahmed-mba/fastapi-travel-booking" target="_blank" rel="noopener">→ Voir sur GitHub</a>
           </div>
-        </div>
+        </article>
 
-        <div class="proj-card">
-          <div class="term-bar">
-            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
-            <span class="path">~/network-audit — bash</span>
-          </div>
-          <img class="proj-shot" src="assets/proj-network.jpg" alt="Capture du script surveille.sh ouvert dans l'éditeur">
+        <article class="proj-card">
+          <div class="term-bar" aria-hidden="true"><span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span><span class="path">~/network-audit — bash</span></div>
+          <img class="proj-shot" src="assets/proj-network.jpg" alt="Capture du script surveille.sh ouvert dans l'éditeur" width="600" height="230" loading="lazy" decoding="async">
           <div class="proj-body">
             <h3>Administration et sécurisation de réseau open source</h3>
             <p>Administration d'un réseau local hétérogène sous Linux, avec supervision des services (type Nagios) et serveurs virtualisés sous VMware.</p>
-            <div class="tag-row">
-              <span class="tag">LINUX</span><span class="tag">NAGIOS</span><span class="tag">VMWARE</span>
-            </div>
+            <div class="tag-row"><span class="tag">Linux</span><span class="tag">Nagios</span><span class="tag">VMware</span></div>
             <a class="proj-link" href="https://github.com/ahmed-mba/linux-process-monitor" target="_blank" rel="noopener">→ Voir sur GitHub</a>
           </div>
-        </div>
+        </article>
 
-        <div class="proj-card">
-          <div class="term-bar">
-            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
-            <span class="path">AD\DC01 — Windows Server</span>
-          </div>
+        <article class="proj-card">
+          <div class="term-bar" aria-hidden="true"><span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span><span class="path">AD\DC01 — Windows Server</span></div>
           <div class="proj-body">
             <h3>Administration de réseaux sous logiciel propriétaire</h3>
             <p>Gestion Active Directory (droits, groupes), configuration réseau (IIS, adressage IP) et procédures de sauvegarde sous Windows Server.</p>
-            <div class="tag-row">
-              <span class="tag">ACTIVE DIRECTORY</span><span class="tag">IIS</span><span class="tag">SAUVEGARDE</span>
-            </div>
+            <div class="tag-row"><span class="tag">Active Directory</span><span class="tag">IIS</span><span class="tag">Sauvegarde</span></div>
           </div>
-        </div>
+        </article>
 
-        <div class="proj-card">
-          <div class="term-bar">
-            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
-            <span class="path">CarTransportSim — Processing</span>
-          </div>
-          <img class="proj-shot" src="assets/proj-cars.jpg" alt="Capture du simulateur de transport de voitures">
+        <article class="proj-card">
+          <div class="term-bar" aria-hidden="true"><span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span><span class="path">CarTransportSim — Processing</span></div>
+          <img class="proj-shot" src="assets/proj-cars.jpg" alt="Capture du simulateur de transport de voitures" width="600" height="230" loading="lazy" decoding="async">
           <div class="proj-body">
             <h3>Simulateur de transport de voitures</h3>
             <p>Simulation Processing d'un système multi-postes (entrée, ascenseur, garages, métro) avec gestion des capacités, des priorités et rendu procédural des véhicules.</p>
-            <div class="tag-row">
-              <span class="tag">PROCESSING</span><span class="tag">JAVA</span><span class="tag">SIMULATION</span>
-            </div>
+            <div class="tag-row"><span class="tag">Processing</span><span class="tag">Java</span><span class="tag">Simulation</span></div>
             <a class="proj-link" href="https://github.com/ahmed-mba/car-transport-simulator" target="_blank" rel="noopener">→ Voir sur GitHub</a>
           </div>
-        </div>
+        </article>
 
-        <div class="proj-card">
-          <div class="term-bar">
-            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
-            <span class="path">MountainTrains — Processing</span>
-          </div>
-          <img class="proj-shot" src="assets/proj-trams.jpg" alt="Capture du simulateur de réseau de trams">
+        <article class="proj-card">
+          <div class="term-bar" aria-hidden="true"><span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span><span class="path">MountainTrains — Processing</span></div>
+          <img class="proj-shot" src="assets/proj-trams.jpg" alt="Capture du simulateur de réseau de trams" width="600" height="230" loading="lazy" decoding="async">
           <div class="proj-body">
             <h3>Simulateur de réseau de trams</h3>
             <p>Réseau de trams (5 stations, aiguillages, signalisation) avec dispatching central anti-collision et conception orientée objet (classes abstraites, pattern Command).</p>
-            <div class="tag-row">
-              <span class="tag">PROCESSING</span><span class="tag">JAVA</span><span class="tag">POO</span><span class="tag">SIMULATION</span>
-            </div>
+            <div class="tag-row"><span class="tag">Processing</span><span class="tag">Java</span><span class="tag">POO</span><span class="tag">Simulation</span></div>
             <a class="proj-link" href="https://github.com/ahmed-mba/mountain-trains-simulation" target="_blank" rel="noopener">→ Voir sur GitHub</a>
           </div>
-        </div>
+        </article>
 
       </div>
     </div>
   </section>
 
-  <section class="section reveal" id="formation">
+  <section class="section reveal" id="formation" aria-labelledby="t-form">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">FORMATION</p>
-        <h2>Parcours académique</h2>
+        <p class="eyebrow">Formation</p>
+        <h2 id="t-form">Parcours académique</h2>
       </div>
-
-      <div class="timeline">
-        <div class="t-item">
-          <div class="yr">2025 — 2026</div>
-          <h3>Bachelier en informatique</h3>
-          <div class="school">ECIPN de Namur</div>
-          <div class="loc">Namur, Belgique</div>
-        </div>
-        <div class="t-item">
-          <div class="yr">2022 — 2025</div>
-          <h3>Licence en informatique</h3>
-          <div class="school">Université de Namur</div>
-          <div class="loc">Namur, Belgique</div>
-        </div>
-        <div class="t-item">
-          <div class="yr">2021 — 2022</div>
-          <h3>1ère année licence, mathématique et informatique</h3>
-          <div class="school">Université Abderrahmane Mira de Bejaia</div>
-          <div class="loc">Bejaia, Algérie</div>
-        </div>
-        <div class="t-item">
-          <div class="yr">2021 — 2022</div>
-          <h3>Formation en algorithmique (niveaux 1 et 2)</h3>
-          <div class="school">Algerian Training Services (ATS)</div>
-          <div class="loc">Bejaia, Algérie</div>
-        </div>
-        <div class="t-item">
-          <div class="yr">2020 — 2021</div>
-          <h3>Baccalauréat, série technique mathématique</h3>
-          <div class="school">Lycée Chouhada Annani de Bejaia</div>
-          <div class="loc">Bejaia, Algérie</div>
-        </div>
-      </div>
-
-      <div style="margin-top:40px;">
-        <p class="eyebrow">LANGUES</p>
-        <div class="langues">
-          <span class="lang-pill">Français</span>
-          <span class="lang-pill">Arabe</span>
-          <span class="lang-pill">Kabyle</span>
-          <span class="lang-pill">Anglais</span>
-        </div>
+      <ol class="timeline" style="list-style:none;margin-bottom:0">
+        <li class="t-item"><div class="yr">2025 — 2026</div><h3>Bachelier en informatique</h3><div class="school">ECIPN de Namur</div><div class="loc">Namur, Belgique</div></li>
+        <li class="t-item"><div class="yr">2022 — 2025</div><h3>Licence en informatique</h3><div class="school">Université de Namur</div><div class="loc">Namur, Belgique</div></li>
+        <li class="t-item"><div class="yr">2021 — 2022</div><h3>1ère année licence, mathématique et informatique</h3><div class="school">Université Abderrahmane Mira de Bejaia</div><div class="loc">Bejaia, Algérie</div></li>
+        <li class="t-item"><div class="yr">2021 — 2022</div><h3>Formation en algorithmique (niveaux 1 et 2)</h3><div class="school">Algerian Training Services (ATS)</div><div class="loc">Bejaia, Algérie</div></li>
+        <li class="t-item"><div class="yr">2020 — 2021</div><h3>Baccalauréat, série technique mathématique</h3><div class="school">Lycée Chouhada Annani de Bejaia</div><div class="loc">Bejaia, Algérie</div></li>
+      </ol>
+      <div class="langues-block">
+        <p class="eyebrow">Langues</p>
+        <div class="langues"><span class="lang-pill">Français</span><span class="lang-pill">Arabe</span><span class="lang-pill">Kabyle</span><span class="lang-pill">Anglais</span></div>
       </div>
     </div>
   </section>
 
-  <section class="section reveal" id="contact">
+  <section class="section reveal" id="contact" aria-labelledby="t-contact">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">CONTACT</p>
-        <h2>Discutons de votre stage</h2>
-        <p class="lede" style="margin-top:14px;">
-          <span class="dot pulse" style="display:inline-block; margin-right:8px;"></span>Disponible pour un stage — 2026.
-        </p>
+        <p class="eyebrow">Contact</p>
+        <h2 id="t-contact">Discutons de votre stage</h2>
+        <p class="lede"><span class="dot pulse inline" aria-hidden="true"></span>Disponible pour un stage.</p>
       </div>
-
       <div class="contact-grid">
-        <a class="contact-card" href="mailto:ahmed.mebarki@outlook.com">
-          <div class="k">E-mail</div>
-          <div class="v">ahmed.mebarki@outlook.com</div>
-        </a>
-        <a class="contact-card" href="tel:+32492099224">
-          <div class="k">Téléphone</div>
-          <div class="v">+32 492 09 92 24</div>
-        </a>
-        <a class="contact-card" href="https://github.com/ahmed-mba" target="_blank" rel="noopener">
-          <div class="k">GitHub</div>
-          <div class="v">github.com/ahmed-mba</div>
-        </a>
-        <a class="contact-card" href="https://www.linkedin.com/in/ahmed-mebarki-774200248/" target="_blank" rel="noopener">
-          <div class="k">LinkedIn</div>
-          <div class="v">ahmed-mebarki</div>
-        </a>
-        <div class="contact-card">
-          <div class="k">Localisation</div>
-          <div class="v">Rue Julien Colson 44, Namur, Belgique</div>
-        </div>
+        <a class="contact-card" href="mailto:ahmed.mebarki@outlook.com"><div class="k">E-mail</div><div class="v">ahmed.mebarki@outlook.com</div></a>
+        <a class="contact-card" href="tel:+32492099224"><div class="k">Téléphone</div><div class="v">+32 492 09 92 24</div></a>
+        <a class="contact-card" href="https://github.com/ahmed-mba" target="_blank" rel="noopener"><div class="k">GitHub</div><div class="v">github.com/ahmed-mba</div></a>
+        <a class="contact-card" href="https://www.linkedin.com/in/ahmed-mebarki-774200248/" target="_blank" rel="noopener"><div class="k">LinkedIn</div><div class="v">ahmed-mebarki</div></a>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <p>© 2026 Ahmed Mebarki — Namur, Belgique</p>
-  </div>
+<footer class="site-footer">
+  <div class="wrap"><p>© <span id="year">2026</span> Ahmed Mebarki — Namur, Belgique</p></div>
 </footer>
-
-<script>
-  (function(){
-    var body = document.getElementById('termBody');
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    var lines = [
-      {type:'cmd', prompt:'ahmed@namur', path:':~$ ', text:'whoami'},
-      {type:'out', text:'Ahmed Mebarki — étudiant en Réseau & Système (Namur, Belgique)'},
-      {type:'cmd', prompt:'ahmed@namur', path:':~$ ', text:'cat statut.log'},
-      {type:'okout', text:'[OK] Disponible pour un stage — 2026'}
-    ];
-
-    function renderStatic(){
-      lines.forEach(function(l){
-        var p = document.createElement('p');
-        p.className = 'ln';
-        if(l.type === 'cmd'){
-          p.innerHTML = '<span class="prompt">'+l.prompt+'</span><span class="path2">'+l.path+'</span><span class="cmd">'+l.text+'</span>';
-        } else if(l.type === 'okout'){
-          p.innerHTML = '<span class="ok">'+l.text+'</span>';
-        } else {
-          p.innerHTML = '<span class="out">'+l.text+'</span>';
-        }
-        body.appendChild(p);
-      });
-    }
-
-    if(reduced){
-      renderStatic();
-      return;
-    }
-
-    var li = 0;
-    function typeLine(){
-      if(li >= lines.length) return;
-      var l = lines[li];
-      var p = document.createElement('p');
-      p.className = 'ln';
-      body.appendChild(p);
-
-      if(l.type === 'cmd'){
-        var prefix = '<span class="prompt">'+l.prompt+'</span><span class="path2">'+l.path+'</span>';
-        var i = 0;
-        var iv = setInterval(function(){
-          i++;
-          p.innerHTML = prefix + '<span class="cmd">' + l.text.slice(0,i) + '</span><span class="caret"></span>';
-          if(i >= l.text.length){
-            clearInterval(iv);
-            p.innerHTML = prefix + '<span class="cmd">' + l.text + '</span>';
-            li++;
-            setTimeout(typeLine, 260);
-          }
-        }, 42);
-      } else {
-        var cls = l.type === 'okout' ? 'ok' : 'out';
-        p.innerHTML = '<span class="'+cls+'"><span class="caret"></span></span>';
-        setTimeout(function(){
-          p.innerHTML = '<span class="'+cls+'">' + l.text + '</span>';
-          li++;
-          setTimeout(typeLine, 320);
-        }, 260);
-      }
-    }
-    setTimeout(typeLine, 400);
-  })();
-
-  (function(){
-    var els = document.querySelectorAll('.reveal');
-    if(!('IntersectionObserver' in window)){
-      els.forEach(function(e){e.classList.add('is-visible');});
-      return;
-    }
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {threshold:0.12});
-    els.forEach(function(e){obs.observe(e);});
-  })();
-
-  (function(){
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if(reduced || !fineHover) return;
-
-    var els = document.querySelectorAll('.proj-card, .skill-card');
-    els.forEach(function(el){
-      el.addEventListener('mousemove', function(e){
-        var r = el.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        var rx = (py * -6).toFixed(2);
-        var ry = (px * 6).toFixed(2);
-        el.style.transform = 'perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(0)';
-      });
-      el.addEventListener('mouseleave', function(){
-        el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0)';
-      });
-    });
-  })();
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-  (function(){
-    var container = document.getElementById('hero3d');
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(!container || reduced || typeof THREE === 'undefined') return;
-
-    var scene = new THREE.Scene();
-    var w = container.clientWidth, h = container.clientHeight;
-    var camera = new THREE.PerspectiveCamera(50, w/Math.max(h,1), 0.1, 300);
-    camera.position.set(0, 0, 30);
-
-    var renderer;
-    try{ renderer = new THREE.WebGLRenderer({antialias:true, alpha:true}); }
-    catch(e){ return; }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 1.5));
-    renderer.setSize(Math.max(w,1), Math.max(h,1));
-    container.appendChild(renderer.domElement);
-
-    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-    var dl = new THREE.DirectionalLight(0xffffff, 0.95); dl.position.set(6,7,9); scene.add(dl);
-
-    var STAR=420, spos=[];
-    for(var i=0;i<STAR;i++){
-      var r=70+Math.random()*45, th=Math.random()*Math.PI*2, ph=Math.acos(2*Math.random()-1);
-      spos.push(r*Math.sin(ph)*Math.cos(th), r*Math.sin(ph)*Math.sin(th), r*Math.cos(ph));
-    }
-    var sg=new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.Float32BufferAttribute(spos,3));
-    scene.add(new THREE.Points(sg, new THREE.PointsMaterial({color:0xE7ECF2, size:0.55, transparent:true, opacity:0.85, sizeAttenuation:true})));
-
-    var planet = new THREE.Mesh(
-      new THREE.SphereGeometry(4.4, 48, 32),
-      new THREE.MeshStandardMaterial({color:0x0E3A3A, roughness:0.7, metalness:0.35, emissive:0x072020, emissiveIntensity:0.45})
-    );
-    planet.position.set(3, -1.5, -2);
-    scene.add(planet);
-
-    planet.add(new THREE.Mesh(
-      new THREE.SphereGeometry(4.5, 20, 14),
-      new THREE.MeshBasicMaterial({color:0x35D6C0, wireframe:true, transparent:true, opacity:0.16})
-    ));
-
-    var ring1 = new THREE.Mesh(
-      new THREE.TorusGeometry(6.6, 0.42, 16, 90),
-      new THREE.MeshStandardMaterial({color:0xFFB200, roughness:0.5, metalness:0.4, emissive:0xFFB200, emissiveIntensity:0.3, transparent:true, opacity:0.9})
-    );
-    ring1.rotation.x = Math.PI/2.2; ring1.rotation.z = 0.35; planet.add(ring1);
-
-    var ring2 = new THREE.Mesh(
-      new THREE.TorusGeometry(7.8, 0.12, 12, 90),
-      new THREE.MeshBasicMaterial({color:0x35D6C0, transparent:true, opacity:0.45})
-    );
-    ring2.rotation.x = Math.PI/2.2; ring2.rotation.z = 0.35; planet.add(ring2);
-
-    function laptop(){
-      var g=new THREE.Group();
-      var base=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.1,0.95), new THREE.MeshStandardMaterial({color:0xC0C6CC, roughness:0.4, metalness:0.5}));
-      var screen=new THREE.Mesh(new THREE.BoxGeometry(1.4,0.95,0.08), new THREE.MeshStandardMaterial({color:0x121821, emissive:0x35D6C0, emissiveIntensity:0.45}));
-      screen.position.set(0,0.52,-0.42); screen.rotation.x=-0.22; g.add(base,screen); return g;
-    }
-    function server(){
-      var g=new THREE.Group();
-      g.add(new THREE.Mesh(new THREE.BoxGeometry(0.85,2.0,0.85), new THREE.MeshStandardMaterial({color:0x1a2028, roughness:0.5})));
-      for(var i=0;i<5;i++){var led=new THREE.Mesh(new THREE.SphereGeometry(0.05,8,8), new THREE.MeshBasicMaterial({color:0x3ECF6E})); led.position.set(0.28,0.7-i*0.36,0.43); g.add(led);}
-      return g;
-    }
-    function satellite(){
-      var g=new THREE.Group();
-      g.add(new THREE.Mesh(new THREE.BoxGeometry(0.65,0.65,0.65), new THREE.MeshStandardMaterial({color:0xC0C6CC, metalness:0.6, roughness:0.3})));
-      var p1=new THREE.Mesh(new THREE.BoxGeometry(1.7,0.04,0.45), new THREE.MeshStandardMaterial({color:0x1a3a5c, emissive:0x0d2b4d, emissiveIntensity:0.5})); p1.position.x=1.15; g.add(p1);
-      var p2=p1.clone(); p2.position.x=-1.15; g.add(p2);
-      return g;
-    }
-    function monitor(){
-      var g=new THREE.Group();
-      var sc=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.95,0.1), new THREE.MeshStandardMaterial({color:0x121821, emissive:0x35D6C0, emissiveIntensity:0.45}));
-      var st=new THREE.Mesh(new THREE.CylinderGeometry(0.08,0.08,0.5,8), new THREE.MeshStandardMaterial({color:0xC0C6CC})); st.position.y=-0.68; g.add(sc,st); return g;
-    }
-
-    var builders=[laptop,server,satellite,monitor];
-    var techs=[];
-    for(var j=0;j<6;j++){
-      var obj=builders[j%builders.length]();
-      var d={obj:obj, r:8.5+Math.random()*3.5, sp:0.12+Math.random()*0.14, ph:Math.random()*Math.PI*2, yp:(Math.random()-0.5)*5, tilt:Math.random()*0.6};
-      scene.add(obj); techs.push(d);
-    }
-
-    var inView=true;
-    if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(e){inView=e[0].isIntersecting;},{threshold:0}); io.observe(container); }
-
-    var mouseX=0, mouseY=0;
-    window.addEventListener('mousemove', function(e){mouseX=(e.clientX/window.innerWidth)-0.5; mouseY=(e.clientY/window.innerHeight)-0.5;},{passive:true});
-
-    window.addEventListener('resize', function(){
-      var nw=container.clientWidth, nh=container.clientHeight; if(!nw||!nh) return;
-      camera.aspect=nw/nh; camera.updateProjectionMatrix(); renderer.setSize(nw,nh);
-    });
-
-    var clock=new THREE.Clock();
-    function animate(){
-      requestAnimationFrame(animate);
-      if(document.hidden || !inView) return;
-      var t=clock.getElapsedTime();
-      planet.rotation.y=t*0.15;
-      ring1.rotation.z=t*0.05;
-      scene.rotation.y = mouseX*0.3;
-      scene.rotation.x = mouseY*0.12;
-      techs.forEach(function(d){var a=t*d.sp+d.ph; d.obj.position.set(planet.position.x+Math.cos(a)*d.r, d.yp+Math.sin(a*0.7)*1.2, planet.position.z+Math.sin(a)*d.r); d.obj.lookAt(planet.position.x,d.yp,planet.position.z); d.obj.rotation.z=d.tilt+a*0.3;});
-      renderer.render(scene, camera);
-    }
-    animate();
-  })();
-</script>
-<script data-pplx-inline-edit>
-(function () {
-  if (window === window.top) return;
-
-  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
-  const MAX_FONT_BYTES = 500 * 1024;
-  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
-  let scrollForwarding = false;
-  let scrollRaf = 0;
-  let trustedTopOrigin = null;
-
-
-  function matchesAllowedOrigin(origin) {
-    if (!origin) return false;
-    for (const entry of allowedParentOrigins) {
-      if (!entry.includes("*")) {
-        if (entry === origin) return true;
-        continue;
-      }
-      const pattern = new RegExp(
-        "^" +
-          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
-          "$",
-      );
-      if (pattern.test(origin)) return true;
-    }
-    return false;
-  }
-
-
-  function getTrustedParentOrigin(event) {
-    const forwardedParentOrigin =
-      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
-    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
-    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
-  }
-
-
-  function postToTrustedTop(message) {
-    if (!trustedTopOrigin) return;
-    try {
-      window.top.postMessage(message, trustedTopOrigin);
-    } catch (_error) {}
-  }
-
-  function inlineAll(original, clone) {
-    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
-
-    try {
-      const computedStyle = getComputedStyle(original);
-      const serialized = computedStyle.cssText;
-      if (serialized) {
-        clone.style.cssText = serialized;
-      } else {
-        const parts = new Array(computedStyle.length);
-        for (let index = 0; index < computedStyle.length; index += 1) {
-          const property = computedStyle[index];
-          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
-        }
-        clone.style.cssText = parts.join("");
-      }
-    } catch (_error) {}
-
-    const originalChildren = original.children;
-    const clonedChildren = clone.children;
-    for (
-      let index = 0;
-      index < originalChildren.length && index < clonedChildren.length;
-      index += 1
-    ) {
-      inlineAll(originalChildren[index], clonedChildren[index]);
-    }
-  }
-
-  function extractFontUrl(srcValue) {
-    const matches = [
-      ...srcValue.matchAll(
-        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
-      ),
-    ];
-    if (matches.length === 0) return null;
-    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
-    if (woff2) return woff2[1];
-    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
-    if (woff) return woff[1];
-    return matches[0][1];
-  }
-
-  const fontDataUriCache = new Map();
-  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
-
-  async function fetchAsDataUri(url) {
-    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
-    let dataUri = null;
-    try {
-      const response = await fetch(url, { mode: "cors", credentials: "omit" });
-      if (response.ok) {
-        const blob = await response.blob();
-        if (blob.size <= MAX_FONT_BYTES) {
-          dataUri = await new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onloadend = () =>
-              resolve(typeof reader.result === "string" ? reader.result : null);
-            reader.onerror = () => resolve(null);
-            reader.readAsDataURL(blob);
-          });
-        }
-      }
-    } catch (_error) {
-      dataUri = null;
-    }
-    fontDataUriCache.set(url, dataUri);
-    return dataUri;
-  }
-
-  function collectFontFaceRuleTexts() {
-    const rules = [];
-    for (const sheet of document.styleSheets) {
-      let cssRules;
-      try {
-        cssRules = sheet.cssRules;
-      } catch (_error) {
-        continue;
-      }
-      if (!cssRules) continue;
-      for (const rule of cssRules) {
-        const cssText = rule.cssText || "";
-        if (cssText.startsWith("@font-face")) rules.push(cssText);
-      }
-    }
-    return rules;
-  }
-
-  async function buildInlinedFontCss() {
-    const ruleTexts = collectFontFaceRuleTexts();
-    if (ruleTexts.length === 0) return null;
-
-    const resolved = ruleTexts.map((cssText) => {
-      if (!SRC_DECLARATION_RE.test(cssText)) return null;
-      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
-      if (!srcMatch) return null;
-      const url = extractFontUrl(srcMatch[1]);
-      if (!url) return null;
-      try {
-        return { cssText, url: new URL(url, document.baseURI).href };
-      } catch (_error) {
-        return null;
-      }
-    });
-
-    const dataUris = await Promise.all(
-      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
-    );
-
-    const inlined = [];
-    let totalBytes = 0;
-    for (let index = 0; index < resolved.length; index += 1) {
-      const entry = resolved[index];
-      const dataUri = dataUris[index];
-      if (!entry || !dataUri) continue;
-      const approxBytes = dataUri.length * 0.75;
-      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
-      totalBytes += approxBytes;
-      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
-    }
-    return inlined.length > 0 ? inlined.join("\n") : null;
-  }
-
-  function stripExternal(clone) {
-    const images = clone.querySelectorAll("img");
-    for (let index = 0; index < images.length; index += 1) {
-      const src = images[index].getAttribute("src");
-      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
-    }
-
-    const elements = clone.querySelectorAll("*");
-    for (let index = 0; index < elements.length; index += 1) {
-      const style = elements[index].style.cssText;
-      if (style && style.includes("url(")) {
-        elements[index].style.cssText = style.replace(
-          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
-          "none",
-        );
-      }
-    }
-  }
-
-  function emitScroll() {
-    scrollRaf = 0;
-    if (!scrollForwarding) return;
-    postToTrustedTop({
-      type: "INLINE_EDIT_SCROLL",
-      scrollX: window.scrollX,
-      scrollY: window.scrollY,
-    });
-  }
-
-  window.addEventListener(
-    "scroll",
-    function () {
-      if (!scrollForwarding || scrollRaf) return;
-      scrollRaf = requestAnimationFrame(emitScroll);
-    },
-    { passive: true, capture: true },
-  );
-
-  async function handleCaptureRequest(event) {
-    const requestId = event.data.requestId;
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    function postResult(dataUrl) {
-      postToTrustedTop({
-        type: "INLINE_EDIT_SCREENSHOT_RESULT",
-        requestId,
-        dataUrl,
-        scrollX,
-        scrollY,
-      });
-    }
-
-    try {
-      if (document.fonts && document.fonts.ready) {
-        try {
-          await document.fonts.ready;
-        } catch (_error) {}
-      }
-
-      const clone = document.documentElement.cloneNode(true);
-      inlineAll(document.documentElement, clone);
-
-      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
-      for (let index = 0; index < removedNodes.length; index += 1) {
-        removedNodes[index].remove();
-      }
-
-      stripExternal(clone);
-      const inlinedFontCss = await buildInlinedFontCss();
-      if (inlinedFontCss) {
-        const styleEl = document.createElement("style");
-        styleEl.textContent = inlinedFontCss;
-        const head = clone.querySelector("head");
-        if (head) head.appendChild(styleEl);
-        else clone.insertBefore(styleEl, clone.firstChild);
-      }
-
-      const html = new XMLSerializer().serializeToString(clone);
-      const svg =
-        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
-        '<foreignObject width="100%" height="100%">' +
-        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
-        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
-        html +
-        "</div></div></foreignObject></svg>";
-      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-      const image = new Image();
-      image.onload = function () {
-        const canvas = document.createElement("canvas");
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext("2d").drawImage(image, 0, 0);
-        postResult(canvas.toDataURL("image/png"));
-      };
-      image.onerror = function () {
-        postResult(null);
-      };
-      image.src = svgUrl;
-    } catch (_error) {
-      postResult(null);
-    }
-  }
-
-  window.addEventListener("message", function (event) {
-    if (!event.data) return;
-    if (event.source !== window.parent) return;
-
-    const trustedParentOrigin = getTrustedParentOrigin(event);
-    if (!trustedParentOrigin) return;
-    trustedTopOrigin = trustedParentOrigin;
-
-    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
-      scrollForwarding = true;
-      emitScroll();
-      return;
-    }
-
-    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
-      scrollForwarding = false;
-      if (scrollRaf) cancelAnimationFrame(scrollRaf);
-      scrollRaf = 0;
-      return;
-    }
-
-    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
-
-    handleCaptureRequest(event);
-  });
-})();
-
-
-</script></body>
+</body>
 </html>
